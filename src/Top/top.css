@@ -1,0 +1,22 @@
+.topText1 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 38px;
+  color: #151517;
+}
+.topText2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #151517;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+  position: absolute;
+  left: 80px;
+  top: 100px;
+}
