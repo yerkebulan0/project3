@@ -13,7 +13,7 @@ font-family: 'Kanit', sans-serif;
 font-family: 'Montserrat', sans-serif;
 }
 .checkboxIter{
-  display: flex;
+  display: flex;  
   align-items: center;
-  gap: 13px;
+  
 }
