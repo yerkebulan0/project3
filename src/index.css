@@ -15,5 +15,7 @@ font-family: 'Montserrat', sans-serif;
 .checkboxIter{
   display: flex;  
   align-items: center;
+  width: 654px;
+  margin-left: 56px;
   
 }

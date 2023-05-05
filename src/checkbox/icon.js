@@ -31,4 +31,5 @@ export const icon2 = (
 </defs>
 </svg>
 
+
 );

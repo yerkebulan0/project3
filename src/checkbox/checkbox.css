@@ -7,15 +7,23 @@
   border-radius: 4px;
   
 }
+.todoList{
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+  margin-top: 24px;
+}
 .Checkbox {
   padding: 28px 80px 0px 80px;
 }
+
 .CheckboxText {
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
   font-family: "Inter";
-  margin-left: 12px;
+  margin: 0px;
+ 
 }
 .trash {
   width: 240px;
@@ -34,6 +42,7 @@
   margin-left: 56px;
   gap: 12px;
   padding: 0px;
+  margin-top: 8px;
 }
 .DDot{
   height: 20px;
