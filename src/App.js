@@ -3,14 +3,14 @@ import "./App.css";
 import Top from "./Top/top";
 import Button from "./buttons/button";
 import Mid from "./middle/mid";
-import Checkbox from "./checkbox/checkbox";
+import CheckboxList from "./checkbox/CheckboxList";
 
 function App() {
   return <div className="App">
     <Top/>
     <Button/>
     < Mid/>
-    <Checkbox/>
+    <CheckboxList/>
     
   </div>;
 }
