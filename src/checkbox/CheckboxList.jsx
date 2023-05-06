@@ -16,9 +16,10 @@ export default function CheckboxList() {
     <div>
       <div className="todoList">
         {todos.map((item, index) => (
-          <Checkbox item={item} key={index} />
+          <Checkbox item={item} key={index}/>
         ))}
       </div>
+      
       <button className="trash">{trash}Move to trash</button>
     </div>
   );

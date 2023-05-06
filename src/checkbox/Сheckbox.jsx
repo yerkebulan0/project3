@@ -10,13 +10,13 @@ export const Checkbox = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
   if (check) {
-    console.log(item.name);
+    const lineNew = item.name 
   }
-  const Line = {
-    textDecoration: "line-through",
+  // const Line = {
+  //   textDecoration: "line-through",
     
-    color: "#959595",
-  };
+  //   color: "#959595",
+  // };
   const backGr ={
     background: "#E4E6E7",
   }
@@ -37,11 +37,14 @@ export const Checkbox = (props) => {
           className="CheckboxInput"
           type="Checkbox"
         ></input>
-        <p style={{ ...(check && Line) }} className="CheckboxText">
+        <p className="CheckboxText">
           {item.name}
         </p>
       </div>
       {showDropdown && <Dropdown />}
+      
     </div>
+    
+    
   );
 };
