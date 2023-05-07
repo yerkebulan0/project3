@@ -4,8 +4,9 @@ import { useState } from "react";
 import "./checkbox.css";
 import React from "react";
 
-export const Checkbox = (props) => {
+export const Checkbox = (props,) => {
   const { item } = props;
+  
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
