@@ -5,19 +5,19 @@ import "./checkbox.css";
 import React from "react";
 
 export const Checkbox = (props,) => {
-  const { item } = props;
-  
+  const { item,onCheckboxToggle  } = props;
+ 
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
-  if (check) {
-    const lineNew = item.name 
-  }
-  // const Line = {
-  //   textDecoration: "line-through",
-    
-  //   color: "#959595",
-  // };
+  // if (check) {
+  //   const lineNew = item.name 
+  // }
+    // const Line = {
+    //   textDecoration: "line-through",
+      
+    //   color: "#959595",
+    // };
   const backGr ={
     background: "#E4E6E7",
   }
@@ -34,7 +34,7 @@ export const Checkbox = (props,) => {
       </div>{" "}
       <div style={{gap:16,display:"flex"}}>
         <input
-          onChange={() => setCheck(!check)}
+          onChange={() => {setCheck(!check);onCheckboxToggle(item.id);}}
           className="CheckboxInput"
           type="Checkbox"
         ></input>
