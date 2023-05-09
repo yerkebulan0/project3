@@ -5,7 +5,7 @@ import "./checkbox.css";
 import React from "react";
 
 export const Checkbox = (props,) => {
-  const { item,onCheckboxToggle } = props;
+  const { item,onCheckboxToggle,checked } = props;
   
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -19,6 +19,7 @@ export const Checkbox = (props,) => {
   const backGr ={
     background: "#E4E6E7",
   }
+
 
   return (
     <div className="checkboxIter" style={{ padding: "0px",...(check && backGr)  }}>
@@ -36,7 +37,7 @@ export const Checkbox = (props,) => {
           className="CheckboxInput"
           type="Checkbox"
         ></input>
-        <p style={{...(check && Line)}} className="CheckboxText">
+        <p style={item.isClicked ? { textDecoration: 'line-through',color: "#959595" } : {}} className="CheckboxText">
           {item.name}
         </p>
       </div>
