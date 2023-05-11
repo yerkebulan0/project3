@@ -2,14 +2,16 @@ import "./checkbox.css";
 import { trash } from "./icon";
 import { Checkbox } from "./Сheckbox";
 import { useState } from "react";
+import Button from "../buttons/button";
+
 
 export default function CheckboxList() {
   const [todos, setTodos] = useState([
-    { id: 1, name: "Write Essay", isClicked: false },
-    { id: 2, name: "One Hour CSS Course Online", isClicked: false },
-    { id: 3, name: "Buy One Way Tickets to San Fransico", isClicked: false },
-    { id: 4, name: "Go to Gym", isClicked: false },
-    { id: 5, name: "Buy Groceries", isClicked: false },
+    { id: 1, name: "Write Essay", isClicked: false, status: "todo" },
+    {id: 2,name: "One Hour CSS Course Online",isClicked: false,status: "todo",},
+    {id: 3,name: "Buy One Way Tickets to San Fransico",isClicked: false,status: "todo",},
+    { id: 4, name: "Go to Gym", isClicked: false, status: "todo" },
+    { id: 5, name: "Buy Groceries", isClicked: false, status: "todo" }, 
   ]);
 
   const [checkedIds, setCheckedIds] = useState([]);
@@ -22,26 +24,21 @@ export default function CheckboxList() {
     }
     setCheckedIds(newCheckedIds);
     console.log(newCheckedIds);
-   };
-   const handleMoveToTrash = () => {
+  };
+  const handleMoveToTrash = () => {
     const updatedTodos = todos.map((todo) => {
       if (checkedIds.includes(todo.id)) {
-        return { ...todo, isClicked: true };
+        return { ...todo, isClicked: true, status: "trash" };
       }
       return todo;
     });
     setTodos(updatedTodos);
   };
-  
 
-
-  
- 
-  
-  
-  
   return (
-    <div>
+    <div> 
+      <Button />
+     
       <div className="todoList">
         {todos.map((item, index) => (
           <Checkbox
@@ -53,9 +50,9 @@ export default function CheckboxList() {
         ))}
       </div>
 
-      <button onClick={handleMoveToTrash}  className="trash">{trash}Move to trash</button>
+      <button onClick={handleMoveToTrash} className="trash">
+        {trash}Move to trash
+      </button>
     </div>
   );
-        
 }
-      
