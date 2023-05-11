@@ -1,34 +1,63 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import "../buttons/button.css";
 import img from "../buttons/Plus.png";
-export default function Button() {
+export default function Button(props) {
   const [addlist, setAddlist] = useState(false);
-  const [active, setActive] = useState("todo");
-  const changeStatus = (status) => {
-    setActive(status);
+  const { active, changeStatus, } = props;
+  const color = {
+    backgroundColor: "rgba(8, 30, 52, 0.42)",
+  };
+  const color2 = {
+    backgroundColor: "#F0F0F0",
+  };
+  const buttonRef = useRef(null);
+
+  const handleOutsideClick = (event) => {
+    if (event.target !== buttonRef.current && !buttonRef.current.contains(event.target)) {
+      setAddlist(false);
+    }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
   return (
-    <div>
-      <div className="button">
-        <button onClick={() => changeStatus("todo")} className="b1">
+    <div> 
+      <div className="button"  ref={buttonRef}>
+        <button
+          style={active === "todo" ? color : color2}
+          onClick={() => changeStatus("todo")}
+          className="b1"
+        >
           To Do
         </button>
-        <button onClick={() => changeStatus("Done")} className="b2">
+        <button
+          style={active === "Done" ? color : color2}
+          onClick={() => changeStatus("Done")}
+          className="b2"
+        >
           Done
         </button>
-        <button onClick={() => changeStatus("Trash")} className="b3">
+        <button
+          style={active === "Trash" ? color : color2}
+          onClick={() => changeStatus("Trash")}
+          className="b3"
+        >
           Trash
         </button>
         {addlist && (
           <div className="Addlist">
             <b>Add New To Do</b>
-            <input
+            <textarea
               className="Addinput"
               type="text"
               id="placeholderID"
               placeholder="Your text"
-            ></input>
+              style={{ resize: "none" }}
+            ></textarea>
             <button>Add</button>
           </div>
         )}
