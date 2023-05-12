@@ -3,7 +3,8 @@ import "../buttons/button.css";
 import img from "../buttons/Plus.png";
 export default function Button(props) {
   const [addlist, setAddlist] = useState(false);
-  const { active, changeStatus, } = props;
+  const { active, changeStatus, todos,setTodos} = props;
+  const [newTodo,setNewtodo] = useState("")
   const color = {
     backgroundColor: "rgba(8, 30, 52, 0.42)",
   };
@@ -22,8 +23,21 @@ export default function Button(props) {
     document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+    };}, []);
+  const handleInputChange = (event) => {
+    setNewtodo(event.target.value);
+    console.log(newTodo)
+  };
+  const handleAddTodo = () =>{
+    const newElement = {
+      id:todos.length + 1,
+      name:newTodo,
+      isClicked: false,
+      status: "todo",
+    }
+    setTodos([...todos,newElement])
+  }
+
   return (
     <div> 
       <div className="button"  ref={buttonRef}>
@@ -57,8 +71,9 @@ export default function Button(props) {
               id="placeholderID"
               placeholder="Your text"
               style={{ resize: "none" }}
+              onChange={handleInputChange}
             ></textarea>
-            <button>Add</button>
+            <button  onClick={handleAddTodo}>Add</button>
           </div>
         )}
         <button onClick={() => setAddlist(!addlist)} className="black">

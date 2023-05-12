@@ -43,7 +43,8 @@ export default function CheckboxList() {
 
   return (
     <div> 
-      <Button changeStatus={changeStatus} active={active}/>
+      <Button changeStatus={changeStatus} active={active} todos={todos}
+            setTodos={setTodos}/>
      
       <div className="todoList">
         {filteredTodos.map((item, index) => (
@@ -53,6 +54,7 @@ export default function CheckboxList() {
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
             filteredTodos={filteredTodos}
+            
             
           />
         ))}
