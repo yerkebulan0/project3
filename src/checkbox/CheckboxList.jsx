@@ -67,7 +67,7 @@ export default function CheckboxList() {
           <Checkbox
             item={item}
             DeleteForever={DeleteForever}
-            key={index}
+            key={item.id}
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
             

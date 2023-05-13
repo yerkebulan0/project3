@@ -8,6 +8,7 @@ export const Checkbox = (props) => {
   const { item, onCheckboxToggle, checked, DeleteForever } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (showDropdown && !event.target.closest(".checkboxIter")) {
@@ -21,6 +22,9 @@ export const Checkbox = (props) => {
       window.removeEventListener("click", handleClickOutside);
     };
   }, [showDropdown]);
+  const toggleCheckbox = () => {
+    setCheck(!item.isClicked)
+  };
 
   const Line = {
     textDecoration: "line-through",
@@ -57,14 +61,14 @@ export const Checkbox = (props) => {
           style={
             item.isClicked
               ? { textDecoration: "line-through", color: "#959595" }
-              : {}
+              : { textDecoration: 'none', color: "black"}
           }
           className="CheckboxText"
         >
           {item.name}
         </p>
       </div>
-      {showDropdown && <Dropdown DeleteForever={DeleteForever} />}
+      {showDropdown && <Dropdown DeleteForever={DeleteForever} toggleCheckbox={toggleCheckbox} />}
     </div>
   );
 };

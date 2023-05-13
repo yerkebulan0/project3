@@ -5,13 +5,13 @@ import { icon2 } from './icon'
 
 
 
-export default function Dropdown({active ,setActive,DeleteForever,}){
+export default function Dropdown({active ,setActive,DeleteForever,toggleCheckbox}){
     return(
         <div className="show">
           <div className="firstShow"  onClick={() => {
           DeleteForever();
         }} style={{cursor:"pointer"}}> {trash} Delete Forever </div>
-          <div className="secondShow">{icon2} Move Back To To Do </div>
+          <div onClick={toggleCheckbox} className="secondShow">{icon2} Move Back To To Do </div>
         </div>
     )
 }
