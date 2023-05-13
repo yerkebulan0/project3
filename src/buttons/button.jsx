@@ -26,7 +26,7 @@ export default function Button(props) {
     };}, []);
   const handleInputChange = (event) => {
     setNewtodo(event.target.value);
-    console.log(newTodo)
+    
   };
   const handleAddTodo = () =>{
     const newElement = {
@@ -35,8 +35,12 @@ export default function Button(props) {
       isClicked: false,
       status: "todo",
     }
+    if(newTodo === "")
+    return null
     setTodos([...todos,newElement])
-  }
+    setNewtodo('');
+   
+    }
 
   return (
     <div> 
