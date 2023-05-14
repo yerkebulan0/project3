@@ -24,9 +24,13 @@ export const Checkbox = (props) => {
   }, [showDropdown]);
 
   const resetTextStyle = () => {
-    setCheck(false);
+    setCheck(!check);
     item.isClicked = false;
+    setShowDropdown(false)
   };
+  const closeDropdown = ()=>{
+    setShowDropdown(false)
+  }
  
   const backGr = {
     background: "#E4E6E7",
@@ -65,7 +69,7 @@ export const Checkbox = (props) => {
           {item.name}
         </p>
       </div>
-      {showDropdown && <Dropdown DeleteForever={DeleteForever} resetTextStyle={resetTextStyle}/>}
+      {showDropdown && <Dropdown DeleteForever={DeleteForever} resetTextStyle={resetTextStyle} closeDropdown={closeDropdown}/>}
     </div>
   );
 };
