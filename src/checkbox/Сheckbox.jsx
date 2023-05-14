@@ -22,15 +22,12 @@ export const Checkbox = (props) => {
       window.removeEventListener("click", handleClickOutside);
     };
   }, [showDropdown]);
-  const toggleCheckbox = () => {
-    setCheck(!item.isClicked)
-  };
 
-  const Line = {
-    textDecoration: "line-through",
-
-    color: "#959595",
+  const resetTextStyle = () => {
+    setCheck(false);
+    item.isClicked = false;
   };
+ 
   const backGr = {
     background: "#E4E6E7",
   };
@@ -61,14 +58,14 @@ export const Checkbox = (props) => {
           style={
             item.isClicked
               ? { textDecoration: "line-through", color: "#959595" }
-              : { textDecoration: 'none', color: "black"}
+              : {  textDecoration: 'none', color: "black"}
           }
           className="CheckboxText"
         >
           {item.name}
         </p>
       </div>
-      {showDropdown && <Dropdown DeleteForever={DeleteForever} toggleCheckbox={toggleCheckbox} />}
+      {showDropdown && <Dropdown DeleteForever={DeleteForever} resetTextStyle={resetTextStyle}/>}
     </div>
   );
 };
