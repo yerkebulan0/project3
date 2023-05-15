@@ -26,9 +26,7 @@ export default function CheckboxList() {
   const changeStatus = (status) => {
     setActive(status);
   };
-
   const [checkedIds, setCheckedIds] = useState([]);
-
   const onCheckboxToggle = (id) => {
     let newCheckedIds = [];
     if (checkedIds.includes(id)) {
@@ -55,7 +53,15 @@ export default function CheckboxList() {
     setTodos(updatedTodos);
   };
   const handleMoveBackToTodo = (id) => {
-    setTodos();
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, isClicked: true };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+    // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
+    // setCheckedIds(newCheckedIds);
   };
 
   return (
