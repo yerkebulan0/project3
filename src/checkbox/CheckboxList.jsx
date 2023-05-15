@@ -71,7 +71,7 @@ export default function CheckboxList() {
         {todos.map((item, index) => (
           <Checkbox
             item={item}
-            DeleteForever={DeleteForever}
+            deleteForever={deleteForever}
             key={item.id}
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}

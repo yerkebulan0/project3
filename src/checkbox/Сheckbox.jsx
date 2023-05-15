@@ -10,7 +10,7 @@ export const Checkbox = (props) => {
     onCheckboxToggle,
     handleMoveBackToTodo,
     checked,
-    DeleteForever,
+    deleteForever,
   } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
@@ -83,7 +83,7 @@ export const Checkbox = (props) => {
       </div>
       {showDropdown && (
         <Dropdown
-          DeleteForever={DeleteForever}
+          deleteForever={deleteForever}
           resetTextStyle={onMoveBackToTodo}
           closeDropdown={closeDropdown}
         />
