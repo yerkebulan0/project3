@@ -7,8 +7,18 @@ import Button from "../buttons/button";
 export default function CheckboxList() {
   const [todos, setTodos] = useState([
     { id: 1, name: "Write Essay", isClicked: false, status: "todo" },
-    {id: 2,name: "One Hour CSS Course Online",isClicked: false,status: "todo"},
-    {id: 3,name: "Buy One Way Tickets to San Fransico",isClicked: false,status: "todo",},
+    {
+      id: 2,
+      name: "One Hour CSS Course Online",
+      isClicked: false,
+      status: "todo",
+    },
+    {
+      id: 3,
+      name: "Buy One Way Tickets to San Fransico",
+      isClicked: false,
+      status: "todo",
+    },
     { id: 4, name: "Go to Gym", isClicked: false, status: "todo" },
     { id: 5, name: "Buy Groceries", isClicked: false, status: "todo" },
   ]);
@@ -26,22 +36,14 @@ export default function CheckboxList() {
       newCheckedIds = [...checkedIds, id];
     }
     setCheckedIds(newCheckedIds);
-   
   };
 
-  
-    const DeleteForever = () => {
+  const DeleteForever = () => {
     const newTodos = todos.filter((item) => !checkedIds.includes(item.id));
     setTodos(newTodos);
     setCheckedIds([]);
-    
-    
   };
-  
-  
-  
-  
-  
+
   const handleMoveToTrash = () => {
     const updatedTodos = todos.map((todo) => {
       if (checkedIds.includes(todo.id)) {
@@ -50,7 +52,6 @@ export default function CheckboxList() {
       return todo;
     });
     setTodos(updatedTodos);
-   
   };
 
   return (
@@ -70,7 +71,6 @@ export default function CheckboxList() {
             key={item.id}
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
-            
           />
         ))}
       </div>
