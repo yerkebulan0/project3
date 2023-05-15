@@ -1,17 +1,27 @@
 import dot from "./dots.png";
 import Dropdown from "./Dropdown";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./checkbox.css";
 import React from "react";
 
 export const Checkbox = (props) => {
-  const { item, onCheckboxToggle, checked, DeleteForever } = props;
+  const {
+    item,
+    onCheckboxToggle,
+    handleMoveBackToTodo,
+    checked,
+    DeleteForever,
+  } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
-  
+  const dropdownContainerRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (showDropdown && !event.target.closest(".checkboxIter")) {
+      if (
+        showDropdown &&
+        !dropdownContainerRef.current?.contains(event.target)
+      ) {
         setShowDropdown(false);
       }
     };
@@ -23,15 +33,16 @@ export const Checkbox = (props) => {
     };
   }, [showDropdown]);
 
-  const resetTextStyle = () => {
+  const onMoveBackToTodo = () => {
     setCheck(!check);
-    item.isClicked = false;
-    setShowDropdown(false)
+    handleMoveBackToTodo();
+    // item.isClicked = false;
+    setShowDropdown(false);
   };
-  const closeDropdown = ()=>{
-    setShowDropdown(false)
-  }
- 
+  const closeDropdown = () => {
+    setShowDropdown(false);
+  };
+
   const backGr = {
     background: "#E4E6E7",
   };
@@ -40,6 +51,7 @@ export const Checkbox = (props) => {
     <div
       className="checkboxIter"
       style={{ padding: "0px", ...(check && backGr) }}
+      ref={dropdownContainerRef}
     >
       <div className="DDot" onClick={() => setShowDropdown(!showDropdown)}>
         <img
@@ -62,14 +74,20 @@ export const Checkbox = (props) => {
           style={
             item.isClicked
               ? { textDecoration: "line-through", color: "#959595" }
-              : {  textDecoration: 'none', color: "black"}
+              : { textDecoration: "none", color: "black" }
           }
           className="CheckboxText"
         >
           {item.name}
         </p>
       </div>
-      {showDropdown && <Dropdown DeleteForever={DeleteForever} resetTextStyle={resetTextStyle} closeDropdown={closeDropdown}/>}
+      {showDropdown && (
+        <Dropdown
+          DeleteForever={DeleteForever}
+          resetTextStyle={onMoveBackToTodo}
+          closeDropdown={closeDropdown}
+        />
+      )}
     </div>
   );
 };
