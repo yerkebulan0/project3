@@ -84,7 +84,7 @@ export const Checkbox = (props) => {
       {showDropdown && (
         <Dropdown
           deleteForever={deleteForever}
-          resetTextStyle={onMoveBackToTodo}
+          onMoveBackToTodo={onMoveBackToTodo}
           closeDropdown={closeDropdown}
         />
       )}

@@ -5,7 +5,7 @@ import { icon2 } from "./icon";
 
 export default function Dropdown({
   deleteForever,
-  resetTextStyle,
+  onMoveBackToTodo,
   closeDropdown,
 }) {
   return (
@@ -23,7 +23,7 @@ export default function Dropdown({
       </div>
       <div
         style={{ cursor: "pointer" }}
-        onClick={resetTextStyle}
+        onClick={onMoveBackToTodo}
         className="secondShow"
       >
         {icon2} Move Back to To Do{" "}
