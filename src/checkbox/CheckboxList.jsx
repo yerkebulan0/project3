@@ -11,13 +11,13 @@ export default function CheckboxList() {
       id: 2,
       name: "One Hour CSS Course Online",
       isClicked: false,
-      status: "trash",
+      status: "todo",
     },
     {
       id: 3,
       name: "Buy One Way Tickets to San Fransico",
       isClicked: false,
-      status: "done", 
+      status: "todo",
     },
     { id: 4, name: "Go to Gym", isClicked: false, status: "todo" },
     { id: 5, name: "Buy Groceries", isClicked: false, status: "todo" },
@@ -26,7 +26,13 @@ export default function CheckboxList() {
   // const changeStatus = (status) => {
   //   setActive(status);
   // };
-  const filteredTodos = todos.filter((item)=> item.status ===active)
+  const handleShowTrash = () => {
+    const trashTodos = todos.filter((item) => item.status === "trash");
+    setTodos(trashTodos);
+    setActive("trash");
+  };
+
+  const filteredTodos = todos.filter((item) => item.status === active);
   const [checkedIds, setCheckedIds] = useState([]);
   const onCheckboxToggle = (id) => {
     let newCheckedIds = [];
@@ -56,7 +62,7 @@ export default function CheckboxList() {
   const handleMoveBackToTodo = (id) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        return { ...todo, isClicked: false };
+        return { ...todo, isClicked: false, status: "todo" };
       }
       return todo;
     });
@@ -73,6 +79,7 @@ export default function CheckboxList() {
         active={active}
         todos={todos}
         setTodos={setTodos}
+        handleShowTrash={handleShowTrash}
       />
 
       <div className="todoList">
