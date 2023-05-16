@@ -5,7 +5,7 @@ import "./checkbox.css";
 import React from "react";
 
 export const Checkbox = (props) => {
-  const { item, onCheckboxToggle, deleteForever,handleMoveBackToTodo } = props;
+  const { item, onCheckboxToggle, deleteForever, handleMoveBackToTodo } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
   const dropdownContainerRef = useRef(null);
