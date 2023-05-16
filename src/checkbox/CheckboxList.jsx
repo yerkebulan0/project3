@@ -11,21 +11,22 @@ export default function CheckboxList() {
       id: 2,
       name: "One Hour CSS Course Online",
       isClicked: false,
-      status: "todo",
+      status: "trash",
     },
     {
       id: 3,
       name: "Buy One Way Tickets to San Fransico",
       isClicked: false,
-      status: "todo",
+      status: "done", 
     },
     { id: 4, name: "Go to Gym", isClicked: false, status: "todo" },
     { id: 5, name: "Buy Groceries", isClicked: false, status: "todo" },
   ]);
   const [active, setActive] = useState("todo");
-  const changeStatus = (status) => {
-    setActive(status);
-  };
+  // const changeStatus = (status) => {
+  //   setActive(status);
+  // };
+  const filteredTodos = todos.filter((item)=> item.status ===active)
   const [checkedIds, setCheckedIds] = useState([]);
   const onCheckboxToggle = (id) => {
     let newCheckedIds = [];
@@ -54,29 +55,28 @@ export default function CheckboxList() {
   };
   const handleMoveBackToTodo = (id) => {
     const updatedTodos = todos.map((todo) => {
-      if (todo.id ===id) {
+      if (todo.id === id) {
         return { ...todo, isClicked: false };
       }
       return todo;
     });
     setTodos(updatedTodos);
-   
   };
-  
-   // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
-    // setCheckedIds(newCheckedIds);
+
+  // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
+  // setCheckedIds(newCheckedIds);
 
   return (
     <div>
       <Button
-        changeStatus={changeStatus}
+        // changeStatus={changeStatus}
         active={active}
         todos={todos}
         setTodos={setTodos}
       />
 
       <div className="todoList">
-        {todos.map((item, index) => (
+        {filteredTodos.map((item, index) => (
           <Checkbox
             item={item}
             deleteForever={() => deleteForever(item.id)}
@@ -84,7 +84,6 @@ export default function CheckboxList() {
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
             handleMoveBackToTodo={() => handleMoveBackToTodo(item.id)}
-          
           />
         ))}
       </div>
