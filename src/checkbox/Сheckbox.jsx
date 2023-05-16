@@ -5,13 +5,7 @@ import "./checkbox.css";
 import React from "react";
 
 export const Checkbox = (props) => {
-  const {
-    item,
-    onCheckboxToggle,
-    handleMoveBackToTodo,
-    checked,
-    deleteForever,
-  } = props;
+  const { item, onCheckboxToggle, deleteForever,handleMoveBackToTodo } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
   const dropdownContainerRef = useRef(null);
@@ -36,7 +30,6 @@ export const Checkbox = (props) => {
   const onMoveBackToTodo = () => {
     setCheck(!check);
     handleMoveBackToTodo();
-    // item.isClicked = false;
     setShowDropdown(false);
   };
   const closeDropdown = () => {

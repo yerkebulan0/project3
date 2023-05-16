@@ -54,15 +54,17 @@ export default function CheckboxList() {
   };
   const handleMoveBackToTodo = (id) => {
     const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, isClicked: true };
+      if (todo.id ===id) {
+        return { ...todo, isClicked: false };
       }
       return todo;
     });
     setTodos(updatedTodos);
-    // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
-    // setCheckedIds(newCheckedIds);
+   
   };
+  
+   // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
+    // setCheckedIds(newCheckedIds);
 
   return (
     <div>
@@ -81,7 +83,8 @@ export default function CheckboxList() {
             key={item.id}
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
-            handleMoveBackToTodo={handleMoveBackToTodo}
+            handleMoveBackToTodo={() => handleMoveBackToTodo(item.id)}
+          
           />
         ))}
       </div>
