@@ -37,10 +37,10 @@ export default function CheckboxList() {
     setCheckedIds(newCheckedIds);
   };
 
-  const deleteForever = () => {
-    const newTodos = todos.filter((item) => !checkedIds.includes(item.id));
+  const deleteForever = (id) => {
+    const newTodos = todos.filter((item) => item.id !== id);
     setTodos(newTodos);
-    setCheckedIds([]);
+    setCheckedIds(checkedIds.filter((item) => item !== id));
   };
 
   const handleMoveToTrash = () => {
@@ -79,7 +79,7 @@ export default function CheckboxList() {
         {todos.map((item, index) => (
           <Checkbox
             item={item}
-            deleteForever={deleteForever}
+            deleteForever={() => deleteForever(item.id)}
             key={item.id}
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
