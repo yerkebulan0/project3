@@ -23,12 +23,15 @@ export default function CheckboxList() {
     { id: 5, name: "Buy Groceries", isClicked: false, status: "todo" },
   ]);
   const [active, setActive] = useState("todo");
- 
+
   const handleShowTrash = () => {
     setActive("trash");
   };
   const handleShowTodo = () => {
     setActive("todo");
+  };
+  const handleShowDone = () => {
+    setActive("done");
   };
 
   const filteredTodos = todos.filter((item) => item.status === active);
@@ -40,8 +43,18 @@ export default function CheckboxList() {
     } else {
       newCheckedIds = [...checkedIds, id];
     }
+    
     setCheckedIds(newCheckedIds);
+    
+    // setTodos((prevTodos) =>
+    //   prevTodos.map((todo) =>
+    //     todo.id === id
+    //       ? { ...todo, status: todo.status === "done" ? "todo" : "done" }
+    //       : todo
+    //   )
+    // );
   };
+ 
 
   const deleteForever = (id) => {
     const newTodos = todos.filter((item) => item.id !== id);
@@ -66,6 +79,7 @@ export default function CheckboxList() {
       return todo;
     });
     setTodos(updatedTodos);
+    setCheckedIds([])
   };
 
   // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
@@ -80,6 +94,7 @@ export default function CheckboxList() {
         setTodos={setTodos}
         handleShowTrash={handleShowTrash}
         handleShowTodo={handleShowTodo}
+        handleShowDone={handleShowDone}
       />
 
       <div className="todoList">
@@ -91,6 +106,7 @@ export default function CheckboxList() {
             onCheckboxToggle={onCheckboxToggle}
             checked={checkedIds.includes(item.id)}
             handleMoveBackToTodo={() => handleMoveBackToTodo(item.id)}
+            active={active}
           />
         ))}
       </div>

@@ -3,7 +3,7 @@ import "../buttons/button.css";
 import img from "../buttons/Plus.png";
 export default function Button(props) {
   const [addlist, setAddlist] = useState(false);
-  const { active, handleShowTodo, todos, setTodos, handleShowTrash } = props;
+  const { active, handleShowTodo, todos, setTodos, handleShowTrash,handleShowDone } = props;
   const [newTodo, setNewtodo] = useState("");
   const color = {
     backgroundColor: "rgba(8, 30, 52, 0.42)",
@@ -53,7 +53,7 @@ export default function Button(props) {
         >
           To Do
         </button>
-        <button className="b2">Done</button>
+        <button style={active === "done" ? color : color2} onClick={handleShowDone} className="b2">Done</button>
         <button
           style={active === "trash" ? color : color2}
           onClick={handleShowTrash}
