@@ -111,9 +111,9 @@ export default function CheckboxList() {
         ))}
       </div>
 
-      <button onClick={handleMoveToTrash} className="trash">
+      {active === "todo" && <button onClick={handleMoveToTrash} className="trash">
         {trash}Move to trash
-      </button>
+      </button>}
     </div>
   );
 }
