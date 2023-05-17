@@ -3,13 +3,7 @@ import "../buttons/button.css";
 import img from "../buttons/Plus.png";
 export default function Button(props) {
   const [addlist, setAddlist] = useState(false);
-  const {
-    active,
-    handleShowTodo,
-    todos,
-    setTodos,
-    handleShowTrash,
-  } = props;
+  const { active, handleShowTodo, todos, setTodos, handleShowTrash } = props;
   const [newTodo, setNewtodo] = useState("");
   const color = {
     backgroundColor: "rgba(8, 30, 52, 0.42)",
@@ -52,17 +46,16 @@ export default function Button(props) {
   return (
     <div>
       <div className="button" ref={buttonRef}>
-        <button onClick={handleShowTodo} style={active === "todo" ? color : color2} className="b1">
+        <button
+          onClick={handleShowTodo}
+          style={active === "todo" ? color : color2}
+          className="b1"
+        >
           To Do
         </button>
-        <button 
-          style={active === "Done" ? color : color2}
-          className="b2"
-        >
-          Done
-        </button>
+        <button className="b2">Done</button>
         <button
-          style={active === "Trash" ? color : color2}
+          style={active === "trash" ? color : color2}
           onClick={handleShowTrash}
           className="b3"
         >
@@ -95,7 +88,7 @@ export default function Button(props) {
         <div className="mid">
           {active === "todo"
             ? "To Do"
-            : "Done" && active === "Trash"
+            : "Done" && active === "trash"
             ? "Trash"
             : "Done"}
         </div>
