@@ -5,7 +5,7 @@ export default function Button(props) {
   const [addlist, setAddlist] = useState(false);
   const {
     active,
-
+    handleShowTodo,
     todos,
     setTodos,
     handleShowTrash,
@@ -52,18 +52,17 @@ export default function Button(props) {
   return (
     <div>
       <div className="button" ref={buttonRef}>
-        <button style={active === "todo" ? color : color2} className="b1">
+        <button onClick={handleShowTodo} style={active === "todo" ? color : color2} className="b1">
           To Do
         </button>
-        <button
+        <button 
           style={active === "Done" ? color : color2}
-          // onClick={() => changeStatus("Done")}
           className="b2"
         >
           Done
         </button>
         <button
-          // style={active === "Trash" ? color : color2}
+          style={active === "Trash" ? color : color2}
           onClick={handleShowTrash}
           className="b3"
         >

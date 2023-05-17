@@ -23,13 +23,12 @@ export default function CheckboxList() {
     { id: 5, name: "Buy Groceries", isClicked: false, status: "todo" },
   ]);
   const [active, setActive] = useState("todo");
-  // const changeStatus = (status) => {
-  //   setActive(status);
-  // };
+ 
   const handleShowTrash = () => {
-    const trashTodos = todos.filter((item) => item.status === "trash");
-    setTodos(trashTodos);
     setActive("trash");
+  };
+  const handleShowTodo = () => {
+    setActive("todo");
   };
 
   const filteredTodos = todos.filter((item) => item.status === active);
@@ -80,6 +79,7 @@ export default function CheckboxList() {
         todos={todos}
         setTodos={setTodos}
         handleShowTrash={handleShowTrash}
+        handleShowTodo={handleShowTodo}
       />
 
       <div className="todoList">
