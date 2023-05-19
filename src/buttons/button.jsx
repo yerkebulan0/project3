@@ -72,7 +72,7 @@ export default function Button(props) {
               style={{ resize: "none" }}
               onChange={handleInputChange}
             ></textarea>
-            <button onClick={handleAddTodo}>Add</button>
+           <button onClick={() => { handleAddTodo(); setAddlist(false); }}>Add</button>
           </div>
         )}
         <button onClick={() => setAddlist(!addlist)} className="black">
