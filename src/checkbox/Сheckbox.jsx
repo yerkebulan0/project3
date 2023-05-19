@@ -75,7 +75,7 @@ export const Checkbox = (props) => {
           {item.name}
         </p>
       </div>
-      {active==="trash"&&showDropdown && (
+      {["trash", "done"].includes(active) && showDropdown &&(
         <Dropdown
           deleteForever={deleteForever}
           onMoveBackToTodo={onMoveBackToTodo}

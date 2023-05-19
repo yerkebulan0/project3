@@ -3,7 +3,7 @@ import React from "react";
 import "./checkbox.css";
 
 export default function DropdownTwo({handleMoveToDone}) {
-  return <div className="DropdownTwo" onClick={handleMoveToDone}>
+  return <div className="DropdownTwo" onClick={handleMoveToDone} style={{cursor:"pointer"}}>
     <div style={{display:"flex",alignItems:"center",gap:10,paddingLeft:10}}> {icon3}Done</div>
    
   </div>;
