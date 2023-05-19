@@ -81,6 +81,15 @@ export default function CheckboxList() {
     setTodos(updatedTodos);
     setCheckedIds([])
   };
+  const handleMoveToDone = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, status: "done" };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
 
   // const newCheckedIds = checkedIds.filter((checkedId) => checkedId !== id);
   // setCheckedIds(newCheckedIds);
@@ -107,6 +116,7 @@ export default function CheckboxList() {
             checked={checkedIds.includes(item.id)}
             handleMoveBackToTodo={() => handleMoveBackToTodo(item.id)}
             active={active}
+            handleMoveToDone={()=>handleMoveToDone(item.id)}
           />
         ))}
       </div>

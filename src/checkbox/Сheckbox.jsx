@@ -6,7 +6,7 @@ import React from "react";
 import DropdownTwo from "./DropdownTwo";
 
 export const Checkbox = (props) => {
-  const { item, onCheckboxToggle, deleteForever, handleMoveBackToTodo,active } = props;
+  const { item, onCheckboxToggle, deleteForever, handleMoveBackToTodo,active,handleMoveToDone } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [check, setCheck] = useState(false);
   const dropdownContainerRef = useRef(null);
@@ -82,7 +82,7 @@ export const Checkbox = (props) => {
           closeDropdown={closeDropdown}
         />
       )}
-      {active ==="todo"&&showDropdown &&( <DropdownTwo/>)}
+      {active ==="todo"&&showDropdown &&( <DropdownTwo handleMoveToDone={handleMoveToDone}/>)}
     </div>
   );
 };
